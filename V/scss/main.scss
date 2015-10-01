@@ -1,0 +1,158 @@
+@charset "windows-1251";
+@import url("fonts.css");/*Подключение Шрифтов*/
+$default-font-face:"OpenSansRegular";
+*{
+  font-family: $default-font-face, sans-serif;
+  font-size: 14px;
+}
+#Footer{
+  text-align: center;
+}
+input{
+  &.btn-grey{
+    border:none;
+    border-radius:3px;
+    width:300px;
+    height:55px;
+    outline: none;
+    background: transparent url(../Images/Button_Gray_Idle_BG.png) repeat-x;
+    &[value]{
+      font-size: 35px;
+      font-weight: bold;
+      cursor: pointer;
+      font-family: "OpenSansRegular", sans-serif;
+      text-shadow:
+        /*Основной цвет текста*/
+      0 0 2px #C8C8C6,
+
+        /* these are the dark inset shadows
+        the second one add a sharper look and depth to the top of the letters */
+      0 -1px 0 rgba(0,0,0,0.5),
+
+        /* these are the highlights - using rgba you can change the last value if they are too (or too little) bright */
+      0 1px 0 rgba(255,255,255,0.5),
+      0 2px 2px rgba(255,255,255,0.2);
+      color: transparent; /*this hide the text*/
+    }
+  }
+}
+div{
+  &.wrng-placeholder{
+    z-index:1;
+    position:absolute;
+    bottom:30px;
+    left:30px;
+    div.wrng-box{
+      /* Стиль всплыающего окна*/
+      font-family: "OpenSansRegular", sans-serif;
+      font-size: 16px;
+      width: 400px;
+      position: relative;
+
+      border-radius:6px;
+
+      font-weight: bold;
+      text-align: center;
+      min-height: 22px;
+      padding:4px;
+      z-index:2;
+      opacity:0;
+      display: none;
+      bottom:-30px;
+      cursor: pointer;
+      &.wrng-error{
+        /*Стилизация всплывающего окна под ошибку*/
+        background-color: rgba(255, 77, 77, 0.5);
+        border: 1px solid rgba(255, 77, 77, 0.6);
+      }
+      img.wrng-ico{
+        /*Иконка в всплывающем окне*/
+        display:inline-block;
+        float: left;
+        position: relative;
+      }
+      span.wrng-text{
+        /*Текст всплывающего окна*/
+        margin:5px 5px 5px 5px;
+        word-spacing: 3px;
+        word-break:break-all;
+      }
+      &.FadeIn{
+        /* Запуск анимации появления */
+        display: block;
+        -webkit-animation: fadeIn 0.4s linear forwards;
+        -moz-animation: fadeIn 0.4s linear forwards;
+        -o-animation: fadeIn 0.4s linear forwards;
+        -ms-animation: fadeIn 0.4s linear forwards;
+        animation: fadeIn 0.4s linear forwards;
+      }
+
+      /* Анимация появления окна предупреждения */
+      @-webkit-keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; -webkit-transform: translateY(-30px);}
+      }
+
+      @-moz-keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; -moz-transform: translateY(-30px);}
+      }
+
+      @-o-keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; -o-transform: translateY(-30px);}
+      }
+
+      @-ms-keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; -ms-transform: translateY(-30px);}
+      }
+
+      @keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; transform: translateY(-30px);}
+      }
+
+
+      &.FadeOut{
+        /* Запуск анимации исчезания окна предупреждения */
+        -webkit-animation: fadeOut 1s linear forwards;
+        -moz-animation: fadeOut 1s linear forwards;
+        -o-animation: fadeOut 1s linear forwards;
+        -ms-animation: fadeOut 1s linear forwards;
+        animation: fadeOut 1s linear forwards;
+      }
+
+      /* Анимация появления окна предупреждения */
+      @-webkit-keyframes fadeOut {
+        100% { display: none; }
+        99% { opacity: 0; }
+        0% { opacity: 1; -webkit-transform: translateY(-30px);}
+      }
+
+      @-moz-keyframes fadeOut {
+        100% { display: none; }
+        99% { opacity: 0; }
+        0% { opacity: 1; -moz-transform: translateY(-30px);}
+      }
+
+      @-o-keyframes fadeOut {
+        100% { display: none; }
+        99% { opacity: 0; }
+        0% { opacity: 1; -o-transform: translateY(-30px);}
+      }
+
+      @-ms-keyframes fadeOut {
+        100% { display: none; }
+        99% { opacity: 0; }
+        0% { opacity: 1; -ms-transform: translateY(-30px);}
+      }
+
+      @keyframes fadeOut {
+        100% { display: none; }
+        99% { opacity: 0; }
+        0% { opacity: 1; transform: translateY(-30px);}
+      }
+    }
+  }
+}
