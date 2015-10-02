@@ -3,7 +3,7 @@
  */
 var API={};
 
-/* Первончалый вид функции для конкретной задачи
+/* Первончалый вид функции для конкретной задачи dsadasdada
 API.LogIn=function( _command, _username, _password, _html, _onerrmsg){
     var htmlvar= _html||"no";
     var onerrormsgvar=_onerrmsg||"Ошибка авторизации";
