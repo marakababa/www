@@ -1,7 +1,8 @@
-<!--TODO переделать пути  на переменные из настроек -->
+<!--TODO РџРµСЂРµРїРёСЃР°С‚СЊ РїСѓС‚Рё РІ РЅР°СЃС‚СЂРѕР№РєРё -->
 <html>
     <head>
-        <link rel="stylesheet" href="V\css\main.css" />
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="V\css\main.css">
         <script type="text/javascript" src="V\js\jquery.js"></script>
         <script type="text/javascript" src="V\js\Classes.js"></script>
         <script type="text/javascript" src="V\js\md5.js"></script>
