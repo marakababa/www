@@ -4,7 +4,6 @@ var API = (function () {
     API.LogIn = function (command, username, password, html, onerrmsg, onresult) {
         var htmlvar = html || "no";
         var onerrormsgvar = onerrmsg || "Ошибка авторизации";
-        alert("Ошибка авторизации");
         var onresult = onresult || function () {
         };
         $.post('/index.php?c=C_API', {
