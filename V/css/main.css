@@ -1,6 +1,6 @@
 @charset "UTF-8";
 @import url("fonts.css");
-/*Подключение Шрифтов*/
+/*╧юфъы■ўхэшх ╪ЁшЇЄют*/
 * {
   font-family: "OpenSansRegular", sans-serif;
   font-size: 14px; }
@@ -30,7 +30,7 @@ div.wrng-placeholder {
   bottom: 30px;
   left: 30px; }
   div.wrng-placeholder div.wrng-box {
-    /* Стиль всплыающего окна*/
+    /* ╤Єшы№ тёяы√р■∙хую юъэр*/
     font-family: "OpenSansRegular", sans-serif;
     font-size: 16px;
     width: 400px;
@@ -45,24 +45,24 @@ div.wrng-placeholder {
     display: none;
     bottom: -30px;
     cursor: pointer;
-    /* Анимация появления окна предупреждения */
-    /* Анимация появления окна предупреждения */ }
+    /* └эшьрЎш  яю тыхэш  юъэр яЁхфєяЁхцфхэш  */
+    /* └эшьрЎш  яю тыхэш  юъэр яЁхфєяЁхцфхэш  */ }
     div.wrng-placeholder div.wrng-box.wrng-error {
-      /*Стилизация всплывающего окна под ошибку*/
+      /*╤ЄшышчрЎш  тёяы√тр■∙хую юъэр яюф ю°шсъє*/
       background-color: rgba(255, 77, 77, 0.5);
       border: 1px solid rgba(255, 77, 77, 0.6); }
     div.wrng-placeholder div.wrng-box img.wrng-ico {
-      /*Иконка в всплывающем окне*/
+      /*╚ъюэър т тёяы√тр■∙хь юъэх*/
       display: inline-block;
       float: left;
       position: relative; }
     div.wrng-placeholder div.wrng-box span.wrng-text {
-      /*Текст всплывающего окна*/
+      /*╥хъёЄ тёяы√тр■∙хую юъэр*/
       margin: 5px 5px 5px 5px;
       word-spacing: 3px;
       word-break: break-all; }
     div.wrng-placeholder div.wrng-box.FadeIn {
-      /* Запуск анимации появления */
+      /* ╟ряєёъ рэшьрЎшш яю тыхэш  */
       display: block;
       -webkit-animation: fadeIn 0.4s linear forwards;
       -moz-animation: fadeIn 0.4s linear forwards;
@@ -100,7 +100,7 @@ div.wrng-placeholder {
     opacity: 1;
     transform: translateY(-30px); } }
     div.wrng-placeholder div.wrng-box.FadeOut {
-      /* Запуск анимации исчезания окна предупреждения */
+      /* ╟ряєёъ рэшьрЎшш шёўхчрэш  юъэр яЁхфєяЁхцфхэш  */
       -webkit-animation: fadeOut 1s linear forwards;
       -moz-animation: fadeOut 1s linear forwards;
       -o-animation: fadeOut 1s linear forwards;

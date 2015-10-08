@@ -22,7 +22,9 @@
 
         protected function  Output()
         {
-            if (isset($_GET['page']))
-                $this->View("{$_GET['page']}");
+            if ($this->IsGet())
+                echo $this->View("V\\V_Testing.php");
+            if($this->IsPost())
+                echo $this->View("{$_POST['page']}");
         }
     }

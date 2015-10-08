@@ -4,6 +4,7 @@
 //
 //����������� ������� include ����� ��������� ������
 //
+setlocale(LC_ALL,"utf-8");
 function __autoload($classname){
     $t=explode('_',$classname);
     include("{$t[0]}\\$classname.php");

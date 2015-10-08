@@ -1,7 +1,7 @@
  <table>
     <tr>
         <th colspan="2">
-            Авторизация
+            РђРІС‚РѕСЂРёР·Р°С†РёСЏ
         </th>
     </tr>
     <tr>
@@ -14,7 +14,7 @@
     </tr>
     <tr>
         <td>
-            Пароль:
+            РџР°СЂРѕР»СЊ:
         </td>
         <td id="PssTd">
             <input type="password" name='password' />
@@ -23,12 +23,12 @@
     <tr>
         <td colspan="2">
             <input type="checkbox" name="remember"/>
-            Запомнить меня
+            Р—Р°РїРѕРјРЅРёС‚СЊ РјРµРЅСЏ
         </td>
     </tr>
     <tr>
         <td colspan="2">
-            <input type="button" class="btn-grey" value="Вход" onclick="LogIn();"/>
+            <input type="button" class="btn-grey" value="Р’С…РѕРґ" onclick="LogIn();"/>
         </td>
     </tr>
 </table>

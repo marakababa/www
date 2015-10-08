@@ -1,0 +1,210 @@
+@charset "utf-8";
+@import url("fonts.css");//Подключение Шрифтов
+$default-font-face:"OpenSansRegular";
+$overlay-width:50px;//Ширина элементов верхней панели входа
+$overlay-height:50px;//Высота элементов верхней панели входа
+$overlay-element-color:#8002ab;//Цвет неактивного элемента верхней панели входа
+$overlay-activated-element-color:#9b02c3;//Цвет активного элемента верхней панели входа
+
+//Контейнер всего меню
+div#top-login-overlay-container {
+  width: 100%;
+  height: $overlay-height;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+
+  //Для плаающих дивов вправо влево
+  .left-float {
+    float: left;
+  }
+
+  //Для плаающих дивов вправо
+  .right-float {
+    float: right;
+  }
+
+  //Содержимое верхней панели
+  #top-login-overlay-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: $overlay-height;
+    background-color: #64028e;
+
+    //Кнопка меню понели входа
+    #overlay-menu-button {
+      width: $overlay-width;
+      height: $overlay-height;
+      background: $overlay-element-color url("../Images/overlay-menu-lines.png");
+    }
+
+    //Наведение на кнопку меню панели входа
+    #overlay-menu-button:hover {
+      width: $overlay-width;
+      height: $overlay-height;
+      background-color: $overlay-activated-element-color;
+      cursor: pointer;
+      box-shadow: 0 0 50px -8px #ffffff;
+    }
+
+    //Див с полем для логина
+    #overlay-login-textbox-container {
+      height: $overlay-height;
+      position: relative;
+      margin: 0 5px 0 5px;
+    }
+
+    //наведение на див с полем для логина
+    #overlay-login-textbox-container:hover {
+
+      //поле для логина
+      #overlay-login-textbox {
+        box-shadow: inset 0 0 6px #000000,
+        0 0 50px #ffffff;
+      }
+
+    }
+
+    //поле для логина
+    #overlay-login-textbox {
+      width: 170px;
+      position: relative;
+      top: 10px;
+      border: none;
+      border-radius: 5px;
+      height: 30px;
+      background-color: #ffffff;
+      box-shadow: inset 0 0 6px #000000;
+      outline: none;
+      text-align: center;
+      padding: 0 7px 0 7px;
+
+      //временный текст в поле логина
+      &[placeholder] {
+        font-family: $default-font-face, sans-serif;
+        font-weight: bold;
+      }
+
+      //текст в поле логина
+      &[value] {
+        font-family: $default-font-face, sans-serif;
+        font-weight: bold;
+      }
+    }
+
+    //Поле для пароля
+    #overlay-password-textbox {
+      width: 170px;
+      position: relative;
+      top: 10px;
+      border: none;
+      border-radius: 5px;
+      height: 30px;
+      background-color: #ffffff;
+      box-shadow: inset 0 0 6px #000000;
+      outline: none;
+      text-align: center;
+      padding: 0 7px 0 7px;
+      font-family: $default-font-face, sans-serif;
+      font-weight: bold;
+    }
+
+    //активное поле для логина
+    #overlay-login-textbox:active {
+      box-shadow: inset 0 0 6px #000000,
+      0 0 5px 2px #ffffff;
+    }
+
+    //вход в поле для логина
+    #overlay-login-textbox:focus {
+      box-shadow: inset 0 0 6px #000000,
+      0 0 5px 2px #ffffff;
+    }
+
+    //Див с полем для пароля
+    #overlay-password-textbox-container {
+      height: $overlay-height;
+    }
+
+    //наведение на див с полем для пароля
+    #overlay-password-textbox-container:hover {
+
+      //поле для логина
+      #overlay-password-textbox {
+        box-shadow: inset 0 0 6px #000000,
+        0 0 50px #ffffff;
+      }
+
+    }
+
+    //Поле для пароля
+    #overlay-password-textbox {
+      width: 170px;
+      position: relative;
+      top: 10px;
+      border: none;
+      border-radius: 5px;
+      height: 30px;
+      background-color: #ffffff;
+      box-shadow: inset 0 0 6px #000000;
+      outline: none;
+      text-align: center;
+      padding: 0 7px 0 7px;
+      font-family: $default-font-face, sans-serif;
+      font-weight: bold;
+    }
+
+    //активное поле для пароля
+    #overlay-password-textbox:active {
+      box-shadow: inset 0 0 6px #000000,
+      0 0 5px 2px #ffffff;
+    }
+
+    //вход в поле для пароля
+    #overlay-password-textbox:focus {
+      box-shadow: inset 0 0 6px #000000,
+      0 0 5px 2px #ffffff;
+    }
+
+    //Стиль дива со ссылкой Войти
+    #overlay-login-link {
+      margin: 0 10px 0 10px;
+      position: relative;
+      height: $overlay-height;
+      text-align: center;
+      background-color: $overlay-element-color;
+    }
+
+    //Наведение на кнопку див с ссылкой Войти
+    #overlay-login-link:hover {
+      background-color: $overlay-activated-element-color;
+      height: $overlay-height;
+      box-shadow: 0 0 50px -8px #ffffff;
+      cursor: pointer;
+
+      //Стиль текста ссылки войти при наведении
+      #overlay-login-link-text {
+        text-shadow: 0 0 1px #ffffff;
+        cursor: pointer;
+      }
+
+    }
+
+    //Стиль текста ссылки Войти
+    #overlay-login-link-text {
+      position: relative;
+      text-transform: uppercase;
+      top: 11.4px;
+      font-family: OpenSansExtraBold, sans-serif;
+      font-weight: bold;
+      font-size: 20px;
+      color: #f9ffa9;
+      letter-spacing: 0;
+      margin: 0 5px 0 5px;
+    }
+
+  }
+}
