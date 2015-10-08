@@ -1,6 +1,14 @@
 /**
  * Created by Alexey on 07.10.2015.
  */
+/**
+ * Описание LogIn
+ * ---
+ * Delay - задержка перед вызовом DeleteMessage().
+ * ---
+ * LogIn() - авторизирует пользователя на сайте, в случае ошибки выводит
+ * на экран ошибку в виде html-кода
+ * */
 var Delay;
 function LogIn() {
     $(document).ready(function () {
@@ -38,3 +46,4 @@ function DeleteMessage() {
         }
     });
 }
+//# sourceMappingURL=ajax.js.map
