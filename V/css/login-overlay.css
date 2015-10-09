@@ -1,5 +1,6 @@
 @import url("fonts.css");
 div#top-login-overlay-container {
+  overflow: hidden;
   width: 100%;
   height: 50px;
   position: absolute;

@@ -9,7 +9,7 @@ header('Content-Type: text/html; charset=utf-8');
 ?>
 <html>
     <head>
-        <link rel="stylesheet" href="V\css\login-overlay.css">
+        <link rel="stylesheet" href="V/css/login-overlay.css">
     </head>
     <body>
         <div id="top-login-overlay-container">

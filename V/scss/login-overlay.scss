@@ -8,6 +8,7 @@ $overlay-activated-element-color:#9b02c3;//Цвет активного элем�
 
 //Контейнер всего меню
 div#top-login-overlay-container {
+  overflow: hidden;
   width: 100%;
   height: $overlay-height;
   position: absolute;
