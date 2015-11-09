@@ -3,18 +3,44 @@
 $default-font-face:"OpenSansRegular";
 $overlay-width:50px;//Ширина элементов верхней панели входа
 $overlay-height:50px;//Высота элементов верхней панели входа
-$overlay-element-color:#8002ab;//Цвет неактивного элемента верхней панели входа
+$overlay-element-color: #64028e;//Цвет неактивного элемента верхней панели входа
 $overlay-activated-element-color:#9b02c3;//Цвет активного элемента верхней панели входа
 
 //Контейнер всего меню
 div#top-login-overlay-container {
-  overflow: hidden;
+  //overflow: hidden;
   width: 100%;
   height: $overlay-height;
-  position: absolute;
+  //position: absolute;
   top: 0;
   left: 0;
   z-index: 1;
+
+  //Кнопка меню понели входа
+  #overlay-menu-button {
+    position: absolute;
+    width: $overlay-width;
+    height: $overlay-height;
+    z-index: 2;
+    background: transparent url("../Images/overlay-menu-lines.svg");
+
+    &.clicked{
+      width: $overlay-width;
+      height: $overlay-height;
+      background-color: $overlay-activated-element-color;
+      cursor: pointer;
+      box-shadow: 0 0 50px -8px #ffffff;
+    }
+  }
+
+  //Наведение на кнопку меню панели входа
+  #overlay-menu-button:hover {
+    width: $overlay-width;
+    height: $overlay-height;
+    background-color: $overlay-activated-element-color;
+    cursor: pointer;
+    box-shadow: 0 0 50px -8px #ffffff;
+  }
 
   //Для плаающих дивов вправо влево
   .left-float {
@@ -33,28 +59,12 @@ div#top-login-overlay-container {
     left: 0;
     width: 100%;
     height: $overlay-height;
-    background-color: #64028e;
-
-    //Кнопка меню понели входа
-    #overlay-menu-button {
-      width: $overlay-width;
-      height: $overlay-height;
-      background: $overlay-element-color url("../Images/overlay-menu-lines.png");
-    }
-
-    //Наведение на кнопку меню панели входа
-    #overlay-menu-button:hover {
-      width: $overlay-width;
-      height: $overlay-height;
-      background-color: $overlay-activated-element-color;
-      cursor: pointer;
-      box-shadow: 0 0 50px -8px #ffffff;
-    }
+    background-color: $overlay-element-color;
+    overflow: hidden;
 
     //Див с полем для логина
     #overlay-login-textbox-container {
-      height: $overlay-height;
-      position: relative;
+      //height: $overlay-height;
       margin: 0 5px 0 5px;
     }
 
@@ -143,6 +153,7 @@ div#top-login-overlay-container {
 
     //Поле для пароля
     #overlay-password-textbox {
+      margin: 0 5px 0 5px;
       width: 170px;
       position: relative;
       top: 10px;
@@ -176,7 +187,7 @@ div#top-login-overlay-container {
       position: relative;
       height: $overlay-height;
       text-align: center;
-      background-color: $overlay-element-color;
+      background-color: transparent;
     }
 
     //Наведение на кнопку див с ссылкой Войти
@@ -207,5 +218,97 @@ div#top-login-overlay-container {
       margin: 0 5px 0 5px;
     }
 
+    //Картинка логина
+    #overlay-login-image{
+      background-image: url("../Images/login-image.svg");
+      height: $overlay-height;
+      width: $overlay-width;
+      background-color: transparent;
+    }
+
+    //Картинка пароля
+    #overlay-password-image{
+      background-image: url("../Images/password-image.svg");
+      height: $overlay-height;
+      width: $overlay-width;
+      background-color: transparent;
+    }
+
+    //иконка внутри поля логина
+    #overlay-login-textbox-container:after{
+      display: inline-block;
+      position: absolute;
+      right: 5.5px;
+      bottom: 17.5px;
+    }
+  }
+  //СМеню панели авторизации
+  #login-overlay-menu-container{
+    //top: 50px;
+    overflow: hidden;
+    left: 0px;
+    z-index: 1;
+    position: absolute;
+    background-color: $overlay-element-color;
+    li{
+      list-style: none;
+    }
+    &.WrappedOut{
+    }
+
+    &.WrappedIn{
+      overflow:visible;
+    }
+
+    #login-overlay-menu-content{
+      padding: 0;
+      display: block;
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      .ui-menu{
+        padding: 0;
+        background-color: $overlay-element-color;
+      }
+      #login-overlay-menu-body{
+        list-style: none;
+        padding-left: 0;
+
+        span.menu-item{
+          display: block;
+          padding-left:10px;
+          font-weight: bold;
+          font-size: 16px;
+        }
+
+        .ui-menu-item{
+          height: 30px;
+          width: 100%;
+          //background-color:$overlay-element-color ;
+          margin-right: 10px;
+          padding-top: 6.5px;
+        }
+        .ui-state-focus{
+          background-color: $overlay-activated-element-color;
+          cursor: pointer;
+          box-shadow: 0 0 50px -8px #ffffff;
+        }
+      }
+
+      li.menu-header{
+        padding-left: 51px;
+        height: 50px;
+
+        #menu-header-content{
+          display:block;
+          font-weight: bold;
+          font-family: OpenSansBold;
+          font-size: 20px;
+          letter-spacing: 2px;
+          text-align: center;
+          padding-top: 10px;
+        }
+      }
+    }
   }
 }

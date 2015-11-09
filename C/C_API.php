@@ -1,13 +1,23 @@
 <?php
+
+    /**
+     * Class C_API
+     * $msql - подключение к базе данных и набор функций по работе с ней.
+     * $musers - набор функций по работе с пользователями
+     * $data - данные возвращаемы в виде JSON объекта
+     * $instance - переменная хранящая экземпляр данного класса
+     */
     class C_API extends C_Controller{
         private $msql;
         private $musers;
         private $data;
         private static $instance;
 
-        //
-        //�������� ����������
-        //
+        /**
+         * GetInstance()
+         * Возвращает экземпляр данного класса еслм он уже был создан,
+         * иначе создаёт его. Прдотвращение множества копий класса и чрезмерного использования памяти.
+         */
         public static function GetInstance(){
             if(self::$instance==null){
                return self::$instance=new self();
@@ -15,10 +25,19 @@
                 return self::$instance;
             }
         }
+
+        /**
+         *
+         */
         protected function __construct(){
             $this->musers=M_Users::GetInstance();
             $this->data=array();
         }
+
+        /**
+         *  Input()
+         *  "Вынимает" данные из запроса POST
+         */
         protected function Input(){
             if( $this->IsPost() && isset($_POST['command']) ){
                 switch($_POST['command']){
@@ -35,7 +54,7 @@
                                 if(isset($_POST['html']) && $_POST['html']=="yes"){
                                     if(isset($_POST['errmsg'])){
                                         $errmsg=$_POST['errmsg'];
-                                        $this->data['ErrorHtml']=$this->View('\V\elements\error.php',array('errmsg'=>$errmsg));
+                                        $this->data['ErrorHtml']=$this->View("{$GLOBALS['__elements']}error.php",array('errmsg'=>$errmsg));
                                     }
                                 }
                             }

@@ -1,5 +1,15 @@
-@import url("fonts.css");/*Подключение Шрифтов*/
+@import url("fonts.css");
 $default-font-face:"OpenSansRegular";
+$default-font-size:"16px";
+$default-font-color:#F9FFA9;
+.main-font-style{
+  font-face:$default-font-face,sans-serif;
+  font-size:$default-font-size ;
+  color: $default-font-color;
+}
+body{
+  background-color: #c7c8bd;
+}
 *{
   font-family: $default-font-face, sans-serif;
   font-size: 14px;
@@ -21,7 +31,7 @@ input{
       cursor: pointer;
       font-family: "OpenSansRegular", sans-serif;
       text-shadow:
-        /*Основной цвет текста*/
+        /*пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ*/
       0 0 2px #C8C8C6,
 
         /* these are the dark inset shadows
@@ -42,7 +52,6 @@ div{
     bottom:30px;
     left:30px;
     div.wrng-box{
-      /* Стиль всплыающего окна*/
       font-family: "OpenSansRegular", sans-serif;
       font-size: 16px;
       width: 400px;
@@ -60,33 +69,27 @@ div{
       bottom:-30px;
       cursor: pointer;
       &.wrng-error{
-        /*Стилизация всплывающего окна под ошибку*/
         background-color: rgba(255, 77, 77, 0.5);
         border: 1px solid rgba(255, 77, 77, 0.6);
       }
       img.wrng-ico{
-        /*Иконка в всплывающем окне*/
         display:inline-block;
         float: left;
         position: relative;
       }
       span.wrng-text{
-        /*Текст всплывающего окна*/
         margin:5px 5px 5px 5px;
         word-spacing: 3px;
         word-break:break-all;
       }
       &.FadeIn{
-        /* Запуск анимации появления */
         display: block;
         -webkit-animation: fadeIn 0.4s linear forwards;
         -moz-animation: fadeIn 0.4s linear forwards;
         -o-animation: fadeIn 0.4s linear forwards;
-        -ms-animation: fadeIn 0.4s linear forwards;
         animation: fadeIn 0.4s linear forwards;
       }
 
-      /* Анимация появления окна предупреждения */
       @-webkit-keyframes fadeIn {
         0% { opacity: 0; }
         100% { opacity: 1; -webkit-transform: translateY(-30px);}
@@ -114,15 +117,12 @@ div{
 
 
       &.FadeOut{
-        /* Запуск анимации исчезания окна предупреждения */
         -webkit-animation: fadeOut 1s linear forwards;
         -moz-animation: fadeOut 1s linear forwards;
         -o-animation: fadeOut 1s linear forwards;
-        -ms-animation: fadeOut 1s linear forwards;
         animation: fadeOut 1s linear forwards;
       }
 
-      /* Анимация появления окна предупреждения */
       @-webkit-keyframes fadeOut {
         100% { display: none; }
         99% { opacity: 0; }
@@ -152,6 +152,24 @@ div{
         99% { opacity: 0; }
         0% { opacity: 1; transform: translateY(-30px);}
       }
+    }
+  }
+
+  //РґРёРІ РІ РєРѕС‚РѕСЂРѕРј РЅР°С…РѕРґРёС‚СЃСЏ РїР°РЅРµР»СЊ Р°РІС‚РѕСЂРёР·Р°С†РёРё
+  &#login-overlay-placeholder{
+    top:0 ;
+    left:0 ;
+    width: 100%;
+    //height: 50px;
+
+    //Р—Р°С„РёРєСЃРёСЂРѕРІР°РЅРЅС‹Р№
+    &.fixed{
+      position: fixed;
+    }
+
+    //РЎС‚Р°С‚РёС‡РЅС‹Р№ РІ С€Р°РїРєРµ
+    &.top{
+      position: relative;
     }
   }
 }

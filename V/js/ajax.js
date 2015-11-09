@@ -46,4 +46,3 @@ function DeleteMessage() {
         }
     });
 }
-//# sourceMappingURL=ajax.js.map

@@ -1,12 +1,28 @@
 @import url("fonts.css");
 div#top-login-overlay-container {
-  overflow: hidden;
   width: 100%;
   height: 50px;
-  position: absolute;
   top: 0;
   left: 0;
   z-index: 1; }
+  div#top-login-overlay-container #overlay-menu-button {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    z-index: 2;
+    background: transparent url("../Images/overlay-menu-lines.svg"); }
+    div#top-login-overlay-container #overlay-menu-button.clicked {
+      width: 50px;
+      height: 50px;
+      background-color: #9b02c3;
+      cursor: pointer;
+      box-shadow: 0 0 50px -8px #ffffff; }
+  div#top-login-overlay-container #overlay-menu-button:hover {
+    width: 50px;
+    height: 50px;
+    background-color: #9b02c3;
+    cursor: pointer;
+    box-shadow: 0 0 50px -8px #ffffff; }
   div#top-login-overlay-container .left-float {
     float: left; }
   div#top-login-overlay-container .right-float {
@@ -17,20 +33,9 @@ div#top-login-overlay-container {
     left: 0;
     width: 100%;
     height: 50px;
-    background-color: #64028e; }
-    div#top-login-overlay-container #top-login-overlay-content #overlay-menu-button {
-      width: 50px;
-      height: 50px;
-      background: #8002ab url("../Images/overlay-menu-lines.png"); }
-    div#top-login-overlay-container #top-login-overlay-content #overlay-menu-button:hover {
-      width: 50px;
-      height: 50px;
-      background-color: #9b02c3;
-      cursor: pointer;
-      box-shadow: 0 0 50px -8px #ffffff; }
+    background-color: #64028e;
+    overflow: hidden; }
     div#top-login-overlay-container #top-login-overlay-content #overlay-login-textbox-container {
-      height: 50px;
-      position: relative;
       margin: 0 5px 0 5px; }
     div#top-login-overlay-container #top-login-overlay-content #overlay-login-textbox-container:hover #overlay-login-textbox {
       box-shadow: inset 0 0 6px #000000, 0 0 50px #ffffff; }
@@ -75,6 +80,7 @@ div#top-login-overlay-container {
     div#top-login-overlay-container #top-login-overlay-content #overlay-password-textbox-container:hover #overlay-password-textbox {
       box-shadow: inset 0 0 6px #000000, 0 0 50px #ffffff; }
     div#top-login-overlay-container #top-login-overlay-content #overlay-password-textbox {
+      margin: 0 5px 0 5px;
       width: 170px;
       position: relative;
       top: 10px;
@@ -97,7 +103,7 @@ div#top-login-overlay-container {
       position: relative;
       height: 50px;
       text-align: center;
-      background-color: #8002ab; }
+      background-color: transparent; }
     div#top-login-overlay-container #top-login-overlay-content #overlay-login-link:hover {
       background-color: #9b02c3;
       height: 50px;
@@ -116,5 +122,67 @@ div#top-login-overlay-container {
       color: #f9ffa9;
       letter-spacing: 0;
       margin: 0 5px 0 5px; }
+    div#top-login-overlay-container #top-login-overlay-content #overlay-login-image {
+      background-image: url("../Images/login-image.svg");
+      height: 50px;
+      width: 50px;
+      background-color: transparent; }
+    div#top-login-overlay-container #top-login-overlay-content #overlay-password-image {
+      background-image: url("../Images/password-image.svg");
+      height: 50px;
+      width: 50px;
+      background-color: transparent; }
+    div#top-login-overlay-container #top-login-overlay-content #overlay-login-textbox-container:after {
+      display: inline-block;
+      position: absolute;
+      right: 5.5px;
+      bottom: 17.5px; }
+  div#top-login-overlay-container #login-overlay-menu-container {
+    overflow: hidden;
+    left: 0px;
+    z-index: 1;
+    position: absolute;
+    background-color: #64028e; }
+    div#top-login-overlay-container #login-overlay-menu-container li {
+      list-style: none; }
+    div#top-login-overlay-container #login-overlay-menu-container.WrappedIn {
+      overflow: visible; }
+    div#top-login-overlay-container #login-overlay-menu-container #login-overlay-menu-content {
+      padding: 0;
+      display: block;
+      height: 100%;
+      width: 100%;
+      margin: 0; }
+      div#top-login-overlay-container #login-overlay-menu-container #login-overlay-menu-content .ui-menu {
+        padding: 0;
+        background-color: #64028e; }
+      div#top-login-overlay-container #login-overlay-menu-container #login-overlay-menu-content #login-overlay-menu-body {
+        list-style: none;
+        padding-left: 0; }
+        div#top-login-overlay-container #login-overlay-menu-container #login-overlay-menu-content #login-overlay-menu-body span.menu-item {
+          display: block;
+          padding-left: 10px;
+          font-weight: bold;
+          font-size: 16px; }
+        div#top-login-overlay-container #login-overlay-menu-container #login-overlay-menu-content #login-overlay-menu-body .ui-menu-item {
+          height: 30px;
+          width: 100%;
+          margin-right: 10px;
+          padding-top: 6.5px; }
+        div#top-login-overlay-container #login-overlay-menu-container #login-overlay-menu-content #login-overlay-menu-body .ui-state-focus {
+          background-color: #9b02c3;
+          cursor: pointer;
+          box-shadow: 0 0 50px -8px #ffffff; }
+      div#top-login-overlay-container #login-overlay-menu-container #login-overlay-menu-content li.menu-header {
+        padding-left: 51px;
+        height: 50px; }
+        div#top-login-overlay-container #login-overlay-menu-container #login-overlay-menu-content li.menu-header #menu-header-content {
+          display: block;
+          font-weight: bold;
+          font-family: OpenSansBold;
+          font-size: 20px;
+          letter-spacing: 2px;
+          text-align: center;
+          padding-top: 10px; }
 
 /*# sourceMappingURL=login-overlay.css.map */
