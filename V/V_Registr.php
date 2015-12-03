@@ -1,4 +1,4 @@
-<html>
+п»ї<html>
     <head>
         <link rel="stylesheet" href="css/registration.css">
         <script type="text/javascript" src="js/jquery-2.1.4.js"></script>
@@ -23,7 +23,7 @@
                 <tr>
                     <td colspan="2">
                         <center>
-                            <h1>Регистрация</h1>
+                            <h1>Р РµРіРёСЃС‚СЂР°С†РёСЏ</h1>
                         </center>
                     </td>
                 </tr>
@@ -35,7 +35,7 @@
                 <tr>
                     <td>
                         <span class="MyDefaultText Important">
-                            Логин:
+                            Р›РѕРіРёРЅ:
                         </span>
                     </td>
                     <td>
@@ -46,7 +46,7 @@
                 <tr>
                     <td>
                         <span class="MyDefaultText Important">
-                            Пароль:
+                            РџР°СЂРѕР»СЊ:
                         </span>
                     </td>
                     <td>
@@ -56,7 +56,7 @@
                 <tr>
                     <td>
                         <span class="MyDefaultText Important">
-                            Повторите пароль:
+                            РџРѕРІС‚РѕСЂРёС‚Рµ РїР°СЂРѕР»СЊ:
                         </span>
                     </td>
                     <td>
@@ -66,7 +66,7 @@
                 <tr>
                     <td>
                         <span class="MyDefaultText Important">
-                            Адрес электронной почты:
+                            РђРґСЂРµСЃ СЌР»РµРєС‚СЂРѕРЅРЅРѕР№ РїРѕС‡С‚С‹:
                         </span>
                     </td>
                     <td>
@@ -81,7 +81,7 @@
                 <tr>
                     <td>
                         <span class="MyDefaultText">
-                            Имя:
+                            РРјСЏ:
                         </span>
                     </td>
                     <td>
@@ -96,7 +96,7 @@
                 <tr>
                     <td colspan="2">
                         <center>
-                            <input  type="button" name="btn" class="btn-style " value="Подтвердить" />
+                            <input  type="button" name="btn" class="btn-style " value="РџРѕРґС‚РІРµСЂРґРёС‚СЊ" />
                         </center>
                     </td>
                 </tr>

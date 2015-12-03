@@ -1,4 +1,4 @@
-<?
+﻿<?
     Class C_Testing extends C_Controller
     {
         private static $instance;
