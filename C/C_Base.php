@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 //
 // ������� ���������� �����.
@@ -25,8 +25,8 @@ abstract class C_Base extends C_Controller
 	{
 		// ������� ������ ������ � ����������� �������� ������������.
 		$mUsers = M_Users::GetInstance();
-		$mUsers->ClearSessions();
-		$this->user = $mUsers->Get();
+		//$mUsers->ClearSessions();
+		$this->user = $mUsers->Get_user();
 
 		// ��������������� �� �������� �����������, ���� ��� ����������.
 		if ($this->user == null && $this->needLogin)
@@ -47,7 +47,6 @@ abstract class C_Base extends C_Controller
 	    // �������� ������ ���� �������.
         $footer=$this->View($GLOBALS['__elements']."footer.php");
 		$overlay=$this->View($GLOBALS['__elements']."LogIn_Panel.php");
-
 		$vars = array('content' =>$this->content,
 			'overlay'=>$overlay,
 			'footer'=>$footer);

@@ -5,5 +5,11 @@
     "__images":"V\\images\\",
     "__elements":"V\\elements\\",
     "__views":"V\\"
+  },
+  "db_info":{
+    "__host":"127.0.0.1",
+    "__user":"root",
+    "__password":"",
+    "__database":"testsys"
   }
 }

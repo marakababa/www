@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 //
 // Менеджер пользователей
@@ -32,37 +32,37 @@ class M_Users
 		$this->uid = null;
 		$this->onlineMap = null;
 	}
-	
-	//
-	// Очистка неиспользуемых сессий
-	// 
-	public function ClearSessions()
+
+	/**
+	 * Очистка неиспользуемых сессий
+	 * Удаление сессий которые были созданы час назад
+	 */
+	/*public function ClearSessions()
 	{
-		$min = date('Y-m-d H:i:s', time() - 60 * 20); 			
-		$t = "time_last < '%s'";
+		$min = date('Y-m-d H:i:s', time() - 60 * 20);
+		$t = "ss_timelast < '%s'";
 		$where = sprintf($t, $min);
 		$this->msql->Delete('sessions', $where);
-	}
+	}*/
 
-	//
-	// Авторизация
-	// $login 		- логин
-	// $password 	- пароль
-	// $remember 	- нужно ли запомнить в куках
-	// результат	- true или false
-	//
+	/**
+	* Авторизация
+	* @param $login 		- логин
+	* @param $password 	- пароль
+	* @param $remember 	- нужно ли запомнить в куках
+	* @return bool	- true или false
+	*/
 	public function Login($login, $password, $remember = true)
 	{
 		// вытаскиваем пользователя из БД 
 		$user = $this->GetByLogin($login);
-
 		if ($user == null)
 			return false;
-		$id_user = $user['rg_id'];
+		$id_user = $user['us_id'];
 		// проверяем пароль
-		if ($user['rg_password'] != md5($password))
+		if ($user['us_pass'] != md5($password))
 			return false;
-				
+
 		// запоминаем имя и md5(пароль)
 		if ($remember)
 		{
@@ -77,27 +77,34 @@ class M_Users
 		return true;
 	}
 	
-	//
-	// Выход
-	//
+	/**
+	* Выход
+	*/
 	public function Logout()
 	{
 		setcookie('login', '', time() - 1);
 		setcookie('password', '', time() - 1);
+        setcookie('ssid',time() - 1);
 		unset($_COOKIE['login']);
 		unset($_COOKIE['password']);
-		unset($_SESSION['sid']);		
+		unset($_SESSION['sid']);
 		$this->sid = null;
 		$this->uid = null;
 	}
-						
+
+	//TODO Сделать функцию создания пользователя
+	public function Register($login, $password, $args = array()){
+
+	}
+
+
 	//
 	// Получение пользователя
 	// $id_user		- если не указан, брать текущего
 	// результат	- объект пользователя
 	//
-	public function Get($id_user = null)
-	{	
+	public function Get_user($id_user = null)
+	{
 		// Если id_user не указан, берем его по текущей сессии.
 		if ($id_user == null)
 			$id_user = $this->GetUid();
@@ -106,10 +113,24 @@ class M_Users
 			return null;
 			
 		// А теперь просто возвращаем пользователя по id_user.
-		$t = "SELECT * FROM reg_data WHERE rg_id = '%d'";
+		$t = "SELECT users.us_id, users.us_name, users.us_email, fields.field_name, users2fields.field_content, user_types.user_type_name
+			  FROM users
+			  LEFT JOIN users2fields ON users.us_id = users2fields.user_id
+			  LEFT JOIN fields ON fields.field_id = users2fields.field_id
+			  LEFT JOIN user_types ON user_types.user_type_id = users.us_type_id
+			  WHERE us_id = '%d'";
 		$query = sprintf($t, $id_user);
 		$result = $this->msql->Select($query);
-		return $result[0];		
+		$array= array(
+			'id' => $result[0]['us_id'],
+			'login' => $result[0]['us_name'],
+			'user_type' => $result[0]['user_type_name'],
+			'email' => $result[0]['us_email'],
+		);
+		foreach ($result as $row){
+			$array[$row['field_name']] = $row['field_content'];
+		}
+		return new User($array);
 	}
 	
 	//
@@ -117,7 +138,7 @@ class M_Users
 	//
 	public function GetByLogin($login)
 	{	
-		$t = "SELECT * FROM reg_data WHERE rg_login = '%s'";
+		$t = "SELECT * FROM users WHERE us_name = '%s'";
 		$query = sprintf($t, mysqli_real_escape_string($this->msql->connection,$login));
 		$result = $this->msql->Select($query);
 		return $result[0];
@@ -157,12 +178,12 @@ class M_Users
 	{		
 		if ($this->onlineMap == null)
 		{	    
-		    $t = "SELECT DISTINCT id_user FROM sessions";		
+		    $t = "SELECT DISTINCT ss_us_id FROM sessions";
 		    $query  = sprintf($t, $id_user);
 		    $result = $this->msql->Select($query);
 		    
 		    foreach ($result as $item)
-		    	$this->onlineMap[$item['rg_id']] = true;
+		    	$this->onlineMap[$item['us_id']] = true;
 		}
 		
 		return ($this->onlineMap[$id_user] != null);
@@ -184,7 +205,7 @@ class M_Users
 		if ($sid == null)
 			return null;
 			
-		$t = "SELECT id_user FROM sessions WHERE sid = '%s'";
+		$t = "SELECT ss_us_id FROM sessions WHERE ss_sid = '%s'";
 		$query = sprintf($t, mysqli_real_escape_string($this->msql->connection,$sid));
 		$result = $this->msql->Select($query);
 
@@ -193,7 +214,7 @@ class M_Users
 			return null;
 			
 		// Если нашли - запоминм ее.
-		$this->uid = $result[0]['rg_id'];
+		$this->uid = $result[0]['us_id'];
 		return $this->uid;
 	}
 
@@ -215,14 +236,14 @@ class M_Users
 		if ($sid != null)
 		{
 			$session = array();
-			$session['time_last'] = date('Y-m-d H:i:s'); 			
-			$t = "sid = '%s'";
+			$session['ss_timelast'] = date('Y-m-d H:i:s');
+			$t = "ss_sid = '%s'";
 			$where = sprintf($t, mysqli_real_escape_string($this->msql->connection,$sid));
 			$affected_rows = $this->msql->Update('sessions', $session, $where);
 
 			if ($affected_rows == 0)
 			{
-				$t = "SELECT count(*) FROM sessions WHERE sid = '%s'";		
+				$t = "SELECT count(*) FROM sessions WHERE ss_sid = '%s'";
 				$query = sprintf($t, mysqli_real_escape_string($this->msql->connection,$sid));
 				$result = $this->msql->Select($query);
 				
@@ -237,8 +258,8 @@ class M_Users
 		{
 			$user = $this->GetByLogin($_COOKIE['login']);
 			
-			if ($user != null && $user['password'] == $_COOKIE['password'])
-				$sid = $this->OpenSession($user['rg_id']);
+			if ($user != null && $user['us_pass'] == $_COOKIE['password'])
+				$sid = $this->OpenSession($user['us_id']);
 		}
 		
 		// Запоминаем в кеш.
@@ -256,20 +277,21 @@ class M_Users
 	private function OpenSession($id_user)
 	{
 		// генерируем SID
-		$sid = $this->GenerateStr(10);
+		$sid = $this->GenerateStr(32);
 				
 		// вставляем SID в БД
 		$now = date('Y-m-d H:i:s'); 
 		$session = array();
-		$session['id_user'] = $id_user;
-		$session['sid'] = $sid;
-		$session['time_start'] = $now;
-		$session['time_last'] = $now;				
+		$session['ss_us_id'] = $id_user;
+		$session['ss_sid'] = $sid;
+		$session['ss_timestart'] = $now;
+		$session['ss_timelast'] = $now;
 		$this->msql->Insert('sessions', $session); 
 				
 		// регистрируем сессию в PHP сессии
-		$_SESSION['sid'] = $sid;				
-				
+		$_SESSION['sid'] = $sid;
+        $expire = time()+3600*3;
+		setcookie('ssid',$sid,$expire);
 		// возвращаем SID
 		return $sid;	
 	}
@@ -279,7 +301,7 @@ class M_Users
 	// $length 		- ее длина
 	// результат	- случайная строка
 	//
-	private function GenerateStr($length = 10) 
+	private function GenerateStr($length = 10)
 	{
 		$chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPRQSTUVWXYZ0123456789";
 		$code = "";

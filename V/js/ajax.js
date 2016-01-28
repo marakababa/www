@@ -16,8 +16,9 @@ function LogIn() {
             clearTimeout(Delay);
         if (!$(".wrng-box").hasClass("FadeOut") && $(".wrng-box").hasClass("FadeIn"))
             DeleteMessage();
-        var _username = $("input[name='username']").val();
-        var _password = $("input[name='password']").val();
+        var _username = $("#overlay-login-textbox").val();
+        var _password = $.md5($("#overlay-password-textbox").val()) ;
+        alert(_username);
         var onresult = function (data, status) {
             var result = $.parseJSON(data);
             /*                alert("Login status is: " + result.LogIn + "\nRequest  status is: " + status);*/

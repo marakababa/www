@@ -1,4 +1,4 @@
-﻿ <table>
+<table>
     <tr>
         <th colspan="2">
             Авторизация
